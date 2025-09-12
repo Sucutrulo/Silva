@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pinturería Silva — Landing</title>
+  <meta name="description" content="Pinturería Silva - Productos, sucursales, empresa y contacto." />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a class="skip-link" href="#productos">Saltar al contenido</a>
+
+  <!-- Header -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a href="#hero" class="brand" aria-label="Ir al inicio">
+        <img src="img/logo.png" alt="Logo Pinturería Silva" class="logo" />
+      </a>
+
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- NAV moderna con indicador -->
+      <nav class="nav nav--modern" role="navigation" aria-label="Principal">
+        <a href="#productos">Productos</a>
+        <a href="#sucursales">Sucursales</a>
+        <a href="#empresa">Empresa</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn btn--store" href="https://www.tienda.silvafast.com.ar/" target="_blank" rel="noopener">Tienda</a>
+
+        <!-- Indicador deslizante -->
+        <span class="nav__indicator" aria-hidden="true"></span>
+
+        <!-- Redes dentro del menú (mobile) -->
+        <div class="nav-social" aria-label="Redes sociales">
+          <a aria-label="Facebook" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H8.1v-2.9h2.34V9.41c0-2.31 1.38-3.59 3.49-3.59.99 0 2.02.18 2.02.18v2.23h-1.14c-1.12 0-1.47.7-1.47 1.42v1.7h2.5l-.4 2.9h-2.1V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg>
+          </a>
+          <a aria-label="Instagram" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a3 3 0 0 0-3 3V7a3 3 0 0 0 3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.51 5.51 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6.3a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></svg>
+          </a>
+          <a aria-label="WhatsApp" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.5 24l1.7-6.2a11 11 0 1 1 4.1 4.1L.5 24zM6.7 19a9 9 0 1 0-3.1-3.1L3 19l3.7-.9zM17 13.3c-.2-.1-1.2-.6-1.4-.6s-.3 0-.5.2-.6.6-.7.8-.3.2-.5.1a7.1 7.1 0 0 1-2.1-1.3 7.8 7.8 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.5a3 3 0 0 0 .3-.4 1.6 1.6 0 0 0 .2-.4.5.5 0 0 0 0-.5c0-.1-.5-1.2-.7-1.6s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.4 3 3 0 0 0-1 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4.3 5.3 5.3 0 0 0 2.7 1 2.5 2.5 0 0 0 1.7-.6 2.1 2.1 0 0 0 .7-1.3c.1-.7.1-1.2 0-1.3s-.2-.2-.4-.3z"/></svg>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Redes (desktop) -->
+      <div class="social" aria-label="Redes sociales">
+        <a aria-label="Facebook" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H8.1v-2.9h2.34V9.41c0-2.31 1.38-3.59 3.49-3.59.99 0 2.02.18 2.02.18v2.23h-1.14c-1.12 0-1.47.7-1.47 1.42v1.7h2.5l-.4 2.9h-2.1V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg>
+        </a>
+        <a aria-label="Instagram" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a3 3 0 0 0-3 3V7a3 3 0 0 0 3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.51 5.51 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6.3a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></svg>
+        </a>
+        <a aria-label="WhatsApp" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.5 24l1.7-6.2a11 11 0 1 1 4.1 4.1L.5 24zM6.7 19a9 9 0 1 0-3.1-3.1L3 19l3.7-.9zM17 13.3c-.2-.1-1.2-.6-1.4-.6s-.3 0-.5.2-.6.6-.7.8-.3.2-.5.1a7.1 7.1 0 0 1-2.1-1.3 7.8 7.8 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.5a3 3 0 0 0 .3-.4 1.6 1.6 0 0 0 .2-.4.5.5 0 0 0 0-.5c0-.1-.5-1.2-.7-1.6s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.4 3 3 0 0 0-1 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4.3 5.3 5.3 0 0 0 2.7 1 2.5 2.5 0 0 0 1.7-.6 2.1 2.1 0 0 0 .7-1.3c.1-.7.1-1.2 0-1.3s-.2-.2-.4-.3z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Barra de progreso de lectura -->
+    <div class="header__progress" aria-hidden="true"><span class="bar"></span></div>
+  </header>
+
+  <!-- Hero / Carrusel -->
+  <section id="hero" class="hero" aria-label="Promociones destacadas">
+    <div class="hero-decor" aria-hidden="true">
+      <span class="shape shape--1"></span>
+      <span class="shape shape--2"></span>
+      <span class="shape shape--3"></span>
+    </div>
+
+    <div class="carousel" tabindex="0" aria-label="Carrusel de promociones">
+      <div class="slides" aria-live="polite" aria-atomic="true">
+        <article class="slide is-active" style="background-image:url('img/slide1.jpeg')">
+          <div class="slide__overlay">
+            <h1 class="slide__title">25% OFF en Pinturas Seleccionadas</h1>
+            <a class="btn btn--shine" href="#productos">Ver Promoción</a>
+          </div>
+        </article>
+
+        <article class="slide" style="background-image:url('img/slide2.jpeg')">
+          <div class="slide__overlay">
+            <h2 class="slide__title">Capacitate con Nuestros Cursos</h2>
+            <a class="btn btn--shine" href="#empresa">Conocé Más</a>
+          </div>
+        </article>
+
+        <a class="slide slide--link" style="background-image:url('img/slide3.jpeg')"
+           href="https://www.tienda.silvafast.com.ar/" target="_blank" rel="noopener" aria-label="Ir a la tienda">
+          <div class="slide__overlay">
+            <h2 class="slide__title">Envíos Gratis en Compras Mayores</h2>
+            <span class="btn btn--shine">Comprar Ahora</span>
+          </div>
+        </a>
+      </div>
+
+      <button class="ctrl prev" aria-label="Slide anterior">❮</button>
+      <button class="ctrl next" aria-label="Slide siguiente">❯</button>
+
+      <div class="dots" role="tablist" aria-label="Selector de slide">
+        <button class="dot is-active" aria-label="Ir al slide 1"></button>
+        <button class="dot" aria-label="Ir al slide 2"></button>
+        <button class="dot" aria-label="Ir al slide 3"></button>
+      </div>
+
+      <div class="carousel__progress"><span class="bar"></span></div>
+    </div>
+  </section>
+
+  <!-- Productos -->
+  <section id="productos" class="section section--alt">
+    <div class="container">
+      <h2 class="section__title reveal">Productos</h2>
+      <p class="section__subtitle reveal delay-1">Soluciones para cada necesidad: hogar y obra, automotor, construcción, industria y herramientas.</p>
+
+      <div class="grid products">
+        <!-- Hogar y Obra -->
+        <article class="card card--product reveal">
+          <div class="prod__icon" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="M3 6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1h3a2 2 0 1 1 0 4h-3v5a3 3 0 0 1-3 3h-2v-2h2a1 1 0 0 0 1-1V11H5a2 2 0 0 1-2-2V6z" fill="#3b2b23"/><rect x="4" y="5" width="9" height="4" rx="1" fill="#ffd700"/></svg>
+          </div>
+          <h3 class="card__title">Hogar y Obra</h3>
+          <p><strong>Pinturas para hogar y obra</strong></p>
+          <p>Contamos con la más amplia y variada gama de productos para pintar, proteger y embellecer cualquier superficie que desee: paredes interiores y exteriores, aberturas, piso, hierro, madera, piletas, etc.</p>
+          <p><strong>Sistema tintométrico</strong></p>
+          <p>Disponemos de sistemas tintométricos diseñados por especialistas con la más alta tecnología para ofrecer una gran variedad de tonalidades y ayudarlo a conseguir el color justo para sus paredes.</p>
+          <div class="card__actions">
+            <a class="btn btn--shine" href="https://www.tienda.silvafast.com.ar/pinturas/" target="_blank" rel="noopener">Ver productos</a>
+            <a class="btn--ghost" href="#contacto">Consultar</a>
+          </div>
+        </article>
+
+        <!-- Automotor -->
+        <article class="card card--product reveal delay-1">
+          <div class="prod__icon" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="M3 13l2.5-5A3 3 0 0 1 8.2 6h7.6a3 3 0 0 1 2.7 2l2.5 5v5h-2a2 2 0 0 1-2-2v-1H7v1a2 2 0 0 1-2 2H3v-5z" fill="#3b2b23"/><circle cx="7.5" cy="16.5" r="1.5" fill="#ffd700"/><circle cx="16.5" cy="16.5" r="1.5" fill="#ffd700"/></svg>
+          </div>
+          <h3 class="card__title">Automotor</h3>
+          <p><strong>Tecnología para el Automotor</strong></p>
+          <p>Todo taller de chapa y pintura necesita incorporar alta tecnología y así garantizar la entrega del automóvil, en el plazo prometido y óptimas condiciones.</p>
+          <p>Para ello le ofrecemos una amplia variedad de productos (pinturas, diluyentes, masillas, herramientas abrasivas, pistolas para pintar, etc.) de las marcas más prestigiosas del mercado especializadas en La Reparación y la Repintura Automotriz</p>
+          <p><strong>Asistencia Técnica</strong></p>
+          <p>Le ofrecemos asesoramiento y capacitación técnica al tallerista, apoyo logístico y constante información de los productos a la vanguardia en cuanto al rubro, visitas permanentes, etc.</p>
+          <div class="card__actions">
+            <a class="btn btn--shine" href="https://www.tienda.silvafast.com.ar/automotor/" target="_blank" rel="noopener">Ver productos</a>
+            <a class="btn--ghost" href="#contacto">Consultar</a>
+          </div>
+        </article>
+
+        <!-- Construcción -->
+        <article class="card card--product reveal delay-2">
+          <div class="prod__icon" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><rect x="3" y="13" width="18" height="7" rx="1" fill="#3b2b23"/><rect x="5" y="15" width="4" height="2" fill="#ffd700"/><rect x="11" y="15" width="4" height="2" fill="#ffd700"/><rect x="17" y="15" width="4" height="2" fill="#ffd700"/><path d="M12 5a6 6 0 0 0-6 6h12a6 6 0 0 0 6-6z" fill="#ffd700"/></svg>
+          </div>
+          <h3 class="card__title">Construcción</h3>
+          <p><strong>Tecnología para la Construcción</strong></p>
+          <p>Cálculo de ingeniería y materiales - Perfiles estructurales Placas SUPERBOARD Y DURLOCK</p>
+          <p>Aislaciones - Sistema RETAK - STELL FRAME</p>
+          <p>Stock permanente de todos los elementos del sistema.</p>
+          <div class="card__actions">
+            <a class="btn btn--shine" href="https://www.tienda.silvafast.com.ar/construccion/" target="_blank" rel="noopener">Ver productos</a>
+            <a class="btn--ghost" href="#contacto">Consultar</a>
+          </div>
+        </article>
+
+        <!-- Industria -->
+        <article class="card card--product reveal">
+          <div class="prod__icon" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="M3 20V9l6 3V9l6 3V8l6 3v9H3z" fill="#3b2b23"/><rect x="5" y="16" width="2" height="3" fill="#ffd700"/><rect x="9" y="16" width="2" height="3" fill="#ffd700"/><rect x="13" y="16" width="2" height="3" fill="#ffd700"/></svg>
+          </div>
+          <h3 class="card__title">Industria</h3>
+          <p><strong>Pinturas Industriales</strong></p>
+          <p>Somos distribuidores de la firma REVESTA, que desarrolla, fabrica y comercializa pinturas industriales especiales y revestimientos especiales para pisos.</p>
+          <p><strong>Seguridad Industrial</strong></p>
+          <p>Contamos con indumentaria, equipos, elementos de seguridad y protección personal. (Calzado, máscaras, arneses, casco, antiparras, etc.)</p>
+          <div class="card__actions">
+            <a class="btn btn--shine" href="https://www.tienda.silvafast.com.ar/search/?q=industria" target="_blank" rel="noopener">Ver productos</a>
+            <a class="btn--ghost" href="#contacto">Consultar</a>
+          </div>
+        </article>
+
+        <!-- Herramientas -->
+        <article class="card card--product reveal delay-1">
+          <div class="prod__icon" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="M14 3a5 5 0 0 0 5 5l-3 3-2-2-7.586 7.586a2 2 0 1 0 2.828 2.828L16.828 12l-2-2 3-3A5 5 0 0 0 14 3z" fill="#3b2b23"/><circle cx="8" cy="20" r="1.6" fill="#ffd700"/></svg>
+          </div>
+          <h3 class="card__title">Herramientas</h3>
+          <p><strong>Herramientas y Accesorios</strong></p>
+          <p>Encuentre un solo lugar para todos los materiales y elementos para pintar su casa, oficina o negocio.</p>
+          <p>Pinceles y rodillos - Máquinas para pintar - Herramientas - Cinta de enmascarar - Escaleras</p>
+          <p>Espátulas - Viruta y ácidos - Limpiadores de obra - Etc.</p>
+          <div class="card__actions">
+            <a class="btn btn--shine" href="https://www.tienda.silvafast.com.ar/maquinas-y-herramientas/" target="_blank" rel="noopener">Ver productos</a>
+            <a class="btn--ghost" href="#contacto">Consultar</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sucursales -->
+  <section id="sucursales" class="section">
+    <div class="container">
+      <h2 class="section__title reveal">Nuestras Sucursales</h2>
+      <p class="section__subtitle reveal delay-1">Encontranos en los siguientes puntos. Hacé clic en WhatsApp para escribirnos al instante.</p>
+
+      <div class="grid branches">
+        <article class="card reveal">
+          <img src="img/Colon.jpeg" alt="Sucursal Colón" style="border-radius:12px; margin-bottom:12px; width:100%; height:180px; object-fit:cover;"/>
+          <h3 class="card__title">Sucursal Colón</h3>
+          <ul class="card__list">
+            <li><strong>Dirección:</strong> Av. Colón 120</li>
+            <li><strong>Tel:</strong> 4397500</li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/543815698906" target="_blank" rel="noopener">+54 381 569 8906</a></li>
+            <li><strong>Mail:</strong> <a href="mailto:succolon@silvafast.com.ar">succolon@silvafast.com.ar</a></li>
+          </ul>
+          <div class="card__actions"><a class="btn--ghost" href="https://maps.google.com/?q=Av.+Col%C3%B3n+120" target="_blank" rel="noopener">Cómo llegar</a></div>
+        </article>
+
+        <article class="card reveal delay-1">
+          <img src="img/Roca.jpeg" alt="Sucursal Roca" style="border-radius:12px; margin-bottom:12px; width:100%; height:180px; object-fit:cover;"/>
+          <h3 class="card__title">Sucursal Roca</h3>
+          <ul class="card__list">
+            <li><strong>Dirección:</strong> Av. Roca esquina Jujuy</li>
+            <li><strong>Tel:</strong> 4397500</li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/543815698906" target="_blank" rel="noopener">+54 381 569 8906</a></li>
+            <li><strong>Mail:</strong> <a href="mailto:sucroca@silvafast.com.ar">sucroca@silvafast.com.ar</a></li>
+          </ul>
+          <div class="card__actions"><a class="btn--ghost" href="https://maps.google.com/?q=Av.+Gral.+Roca+901" target="_blank" rel="noopener">Cómo llegar</a></div>
+        </article>
+
+        <article class="card reveal delay-2">
+          <img src="img/Avellaneda.jpeg" alt="Sucursal Avellaneda" style="border-radius:12px; margin-bottom:12px; width:100%; height:180px; object-fit:cover;"/>
+          <h3 class="card__title">Sucursal Avellaneda</h3>
+          <ul class="card__list">
+            <li><strong>Dirección:</strong> Av. Avellaneda esquina Corrientes</li>
+            <li><strong>Tel:</strong> 4397500</li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/543815698906" target="_blank" rel="noopener">+54 381 569 8906</a></li>
+            <li><strong>Mail:</strong> <a href="mailto:sucavellaneda@silvafast.com.ar">sucavellaneda@silvafast.com.ar</a></li>
+          </ul>
+          <div class="card__actions"><a class="btn--ghost" href="https://maps.google.com/?q=Pcia+de+Corrientes+5%2C+T4000+San+Miguel+de+Tucum%C3%A1n%2C+Tucum%C3%A1n" target="_blank" rel="noopener">Cómo llegar</a></div>
+        </article>
+
+        <article class="card reveal">
+          <img src="img/Chacabuco.jpeg" alt="Sucursal Chacabuco" style="border-radius:12px; margin-bottom:12px; width:100%; height:180px; object-fit:cover;"/>
+          <h3 class="card__title">Sucursal Chacabuco</h3>
+          <ul class="card__list">
+            <li><strong>Dirección:</strong> Chacabuco 19</li>
+            <li><strong>Tel:</strong> 4397500</li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/543815698906" target="_blank" rel="noopener">+54 381 569 8906</a></li>
+            <li><strong>Mail:</strong> <a href="mailto:succhacabuco@silvafast.com.ar">succhacabuco@silvafast.com.ar</a></li>
+          </ul>
+          <div class="card__actions"><a class="btn--ghost" href="https://maps.google.com/?q=tucuman%2C+san+miguel+de+tucuman+batalla+de+Chacabuco+19" target="_blank" rel="noopener">Cómo llegar</a></div>
+        </article>
+
+        <article class="card reveal delay-1">
+          <img src="img/Plazoleta.jpeg" alt="Sucursal Plazoleta" style="border-radius:12px; margin-bottom:12px; width:100%; height:180px; object-fit:cover;"/>
+          <h3 class="card__title">Sucursal Plazoleta</h3>
+          <ul class="card__list">
+            <li><strong>Dirección:</strong> Av. Belgrano 1467</li>
+            <li><strong>Tel:</strong> 4397500</li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/543815698906" target="_blank" rel="noopener">+54 381 569 8906</a></li>
+            <li><strong>Mail:</strong> <a href="mailto:sucplazoleta@silvafast.com.ar">sucplazoleta@silvafast.com.ar</a></li>
+          </ul>
+          <div class="card__actions"><a class="btn--ghost" href="https://maps.google.com/?q=Av.+Manuel+Belgrano+1467" target="_blank" rel="noopener">Cómo llegar</a></div>
+        </article>
+
+        <article class="card reveal delay-2">
+          <img src="img/Belgrano.jpeg" alt="Sucursal Belgrano" style="border-radius:12px; margin-bottom:12px; width:100%; height:180px; object-fit:cover;"/>
+          <h3 class="card__title">Sucursal Belgrano</h3>
+          <ul class="card__list">
+            <li><strong>Dirección:</strong> Av. Belgrano esquina Viamonte</li>
+            <li><strong>Tel:</strong> 4397500</li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/543815698906" target="_blank" rel="noopener">+54 381 569 8906</a></li>
+            <li><strong>Mail:</strong> <a href="mailto:sucbelgrano@silvafast.com.ar">sucbelgrano@silvafast.com.ar</a></li>
+          </ul>
+          <div class="card__actions"><a class="btn--ghost" href="https://maps.google.com/?q=Av.+Manuel+Belgrano+2894" target="_blank" rel="noopener">Cómo llegar</a></div>
+        </article>
+
+        <article class="card reveal">
+          <img src="img/Mastil.jpeg" alt="Sucursal Mástil" style="border-radius:12px; margin-bottom:12px; width:100%; height:180px; object-fit:cover;"/>
+          <h3 class="card__title">Sucursal Mástil</h3>
+          <ul class="card__list">
+            <li><strong>Dirección:</strong> Av. Aconquija 2091 (Yerba Buena)</li>
+            <li><strong>Tel:</strong> 4397500</li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/543815698906" target="_blank" rel="noopener">+54 381 569 8906</a></li>
+            <li><strong>Mail:</strong> <a href="mailto:sucmastil@silvafast.com.ar">sucmastil@silvafast.com.ar</a></li>
+          </ul>
+          <div class="card__actions"><a class="btn--ghost" href="https://maps.google.com/?q=Av.+Aconquija+2091%2C+T4107+Yerba+Buena%2C+Tucum%C3%A1n" target="_blank" rel="noopener">Cómo llegar</a></div>
+        </article>
+
+        <article class="card reveal delay-1">
+          <img src="img/Siria.jpeg" alt="Sucursal Siria" style="border-radius:12px; margin-bottom:12px; width:100%; height:180px; object-fit:cover;"/>
+          <h3 class="card__title">Sucursal Siria</h3>
+          <ul class="card__list">
+            <li><strong>Dirección:</strong> Av. Siria 1783</li>
+            <li><strong>Tel:</strong> 4397500</li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/543815698906" target="_blank" rel="noopener">+54 381 569 8906</a></li>
+            <li><strong>Mail:</strong> <a href="mailto:sucsiria@silvafast.com.ar">sucsiria@silvafast.com.ar</a></li>
+          </ul>
+          <div class="card__actions"><a class="btn--ghost" href="https://maps.google.com/?q=Av.+Rep%C3%BAblica+de+Siria+1783" target="_blank" rel="noopener">Cómo llegar</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Empresa -->
+  <section id="empresa" class="section section--alt">
+    <div class="container">
+      <h2 class="section__title reveal">Empresa</h2>
+      <p class="section__subtitle reveal delay-1">Editá los textos para reflejar exactamente la identidad y propósito de Pinturería Silva.</p>
+
+      <div class="mandates">
+        <article class="mandate reveal"><h3>Misión</h3><p>Brindar soluciones integrales en pinturas y revestimientos, ofreciendo asesoramiento técnico, calidad y cercanía al cliente. <em>(Editar con el texto oficial)</em></p></article>
+        <article class="mandate reveal delay-1"><h3>Visión</h3><p>Ser referentes del mercado regional, innovando en productos, servicios y capacitación para profesionales y hogares. <em>(Editar con el texto oficial)</em></p></article>
+        <article class="mandate reveal"><h3>Valores</h3><ul><li>Orientación al cliente y excelencia.</li><li>Integridad y responsabilidad.</li><li>Innovación y mejora continua.</li><li>Sustentabilidad y comunidad.</li></ul></article>
+        <article class="mandate reveal delay-1"><h3>Compromisos</h3><ul><li>Marcas líderes y stock confiable.</li><li>Capacitación constante.</li><li>Logística eficiente.</li><li>Garantía de satisfacción.</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="section">
+    <div class="container">
+      <h2 class="section__title reveal">Contacto</h2>
+      <form class="contact-form reveal delay-1" action="#" method="post" novalidate>
+        <div class="form__row">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" required />
+        </div>
+        <div class="form__row">
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="form__row">
+          <label for="telefono">Teléfono</label>
+          <input id="telefono" name="telefono" type="tel" placeholder="Solo números" pattern="[0-9]{8,15}" />
+        </div>
+        <div class="form__row">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn--shine">Enviar Mensaje</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand" aria-label="Grupo Silva">
+        <img src="img/logo2.png" alt="Logo Grupo Silva">
+        <small>Una división de Grupo Silva</small>
+      </div>
+
+      <p>&copy; 2025 Pinturería Silva. Todos los derechos reservados.</p>
+
+      <nav class="footer__nav">
+        <a href="#productos">Productos</a>
+        <a href="#sucursales">Sucursales</a>
+        <a href="#empresa">Empresa</a>
+        <a href="#contacto" class="contact-link">Contacto</a>
+        <a href="https://www.tienda.silvafast.com.ar/" target="_blank" rel="noopener">Tienda</a>
+      </nav>
+
+      <a class="to-top" href="#top" aria-label="Volver arriba">↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
