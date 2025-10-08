@@ -383,8 +383,7 @@ textarea{ resize:vertical; min-height:120px }
   background:var(--yellow); /* Footer amarillo solicitado */
   color:#000; /* Texto negro */
   padding:20px 0; margin-top:28px;
-  border-top:8px solid #000; /* Línea negra en parte superior del footer */
-  border-bottom:8px solid #000; /* Línea negra en parte inferior del footer */
+  border-top:4px solid #000; /* Línea negra en parte superior del footer */
 }
 .footer__inner{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap }
 .footer__nav{ display:flex; gap:16px; flex-wrap:wrap }
