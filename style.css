@@ -111,8 +111,8 @@ section[id]{ scroll-margin-top: 96px; }
 @media (max-width:860px){
   .nav-toggle{ display:block }
   .nav{
-    position:fixed; inset:64px 0 auto 0; background:#000; /* mantiene negro en mobile */
-    flex-direction:column; gap:18px; padding:18px;
+    position:fixed; inset:72px 0 auto 0; background:#000; /* mantiene negro en mobile */
+    flex-direction:column; gap:12px; padding:6px 8px; /* compacto para que el alto sea ~ el del botón */
     transform:translateY(-120%); transition:transform .25s var(--ease-out);
     box-shadow:0 8px 20px rgba(0,0,0,.3);
   }
@@ -131,23 +131,13 @@ section[id]{ scroll-margin-top: 96px; }
     box-shadow .25s var(--ease-out),
     text-shadow .25s var(--ease-out);
 }
+
+/* Indicador: oculto siempre (evita “burbuja” por debajo del hover) */
 .nav__indicator{
-  position:absolute; top:50%; left:0; transform:translate(0,-50%);
-  width:0; height:36px; border-radius:999px;
-  background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05));
-  border:1px solid rgba(255,255,255,.14);
-  box-shadow:0 6px 18px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,215,0,.14);
-  opacity:0; pointer-events:none;
-  transition:
-    transform .35s cubic-bezier(.16,1,.3,1),
-    width .35s cubic-bezier(.16,1,.3,1),
-    height .2s cubic-bezier(.16,1,.3,1),
-    opacity .2s ease;
-  /* Pedido: ocultar siempre la burbuja/indicador */
   display:none !important;
 }
 
-/* Activo: SIN amarillo (halo sutil) */
+/* Activo: SIN amarillo. Halo/sombreado sutil */
 .nav--modern a.is-active{
   color:#fff;
   background:transparent;
@@ -162,8 +152,7 @@ section[id]{ scroll-margin-top: 96px; }
 .nav--modern a:not(.btn--store):hover,
 .nav--modern a:not(.btn--store):focus-visible{
   background:transparent;
-  color:#fff;
-  text-shadow:0 0 6px rgba(255,255,255,.35);
+  color:#fff; text-shadow:0 0 6px rgba(255,255,255,.35);
   box-shadow:
     inset 0 0 0 2px rgba(255,255,255,.25),
     0 0 12px rgba(255,255,255,.18);
@@ -173,8 +162,8 @@ section[id]{ scroll-margin-top: 96px; }
 
 /* Redes dentro del menú móvil */
 .nav-social{
-  display:none; width:100%; margin-top:6px; padding-top:12px; border-top:1px solid rgba(255,255,255,.15);
-  justify-content:center; gap:12px;
+  display:none; width:100%; margin-top:4px; padding-top:6px; border-top:1px solid rgba(255,255,255,.15);
+  justify-content:center; gap:8px;
 }
 @media (max-width:860px){
   .nav-social{ display:flex }
@@ -200,7 +189,7 @@ section[id]{ scroll-margin-top: 96px; }
   color:#2b1f1a;
   background:linear-gradient(180deg,var(--y1),var(--y2) 55%,var(--y3));
   border-radius:999px; border:1px solid rgba(0,0,0,.08);
-  box-shadow:0 6px 18px rgba(255,215,0,.35), inset 0 1px 0 rgba(255,255,255,.65);
+  box-shadow:0 6px 18px rgba(255,215,0,.35), inset 0 1px 0 rgba(255,255,0,.65);
   position:relative;
 }
 .header .btn--store{ padding-block:14px; padding-inline:28px; gap:.75rem }
@@ -221,7 +210,7 @@ section[id]{ scroll-margin-top: 96px; }
   outline:none;
 }
 
-/* CTA “shine” para promos, formularios y “Cómo llegar” */
+/* CTA “shine” (promos, formularios y “Cómo llegar”) */
 .btn--shine{
   position:relative;
   background:linear-gradient(180deg,#fff3a8,#ffe066 55%,#ffc533);
@@ -319,7 +308,7 @@ section[id]{ scroll-margin-top: 96px; }
 .carousel__progress{ position:absolute; left:0; right:0; bottom:0; height:4px; background:rgba(255,255,255,.15) }
 .carousel__progress .bar{ display:block; height:100%; width:0%; background:linear-gradient(90deg,#ffdf6d,#ffd700); transition:width .1s linear }
 
-/* Fallback de texto (oculto por defecto; lo mostramos en móvil) */
+/* Fallback de texto (oculto por defecto; se muestra en móvil) */
 .hero-fallback{ display:none; }
 .hero-fallback h2{ margin:0 0 .4rem; font-family:'Poppins',sans-serif; }
 .hero-fallback p{ margin:.25rem 0 1rem; }
@@ -427,14 +416,10 @@ textarea{ resize:vertical; min-height:120px }
 }
 
 /* =========================================================
-   AJUSTES ESPECÍFICOS SOLICITADOS PARA SUCURSALES
-   - “Cómo llegar” con estilo de “Ver productos”
-   - Icono de WhatsApp en enlaces wa.me
-   - Icono de Mail en enlaces mailto:
-   - Icono de Maps en botón “Cómo llegar” (si se usa clase .map-link)
+   AJUSTES ESPECÍFICOS PARA SUCURSALES (WA / MAIL / MAPS + “Cómo llegar”)
    ========================================================= */
 
-/* 1) “Cómo llegar” = botón shine (aunque el HTML tenga .btn--ghost) */
+/* “Cómo llegar” = botón shine (aunque el HTML tenga .btn--ghost) */
 .branches .card .card__actions .btn--ghost{
   background:linear-gradient(180deg,#fff3a8,#ffe066 55%,#ffc533) !important;
   color:#2b1f1a !important;
@@ -454,11 +439,11 @@ textarea{ resize:vertical; min-height:120px }
   outline: none;
 }
 
-/* 2) WhatsApp: agregar ícono (no duplica si ya usás SVG .link-icon) */
+/* WhatsApp: ícono */
 .branches .card .card__list a[href*="wa.me"]{
   display:inline-flex; align-items:center; gap:.45rem;
 }
-.branches .card .card__list a.link-icon::before{ content:none !important; } /* evita duplicado si el HTML ya tiene SVG */
+.branches .card .card__list a.link-icon::before{ content:none !important; }
 .branches .card .card__list a[href*="wa.me"]:not(.link-icon)::before{
   content:"";
   width:18px; height:18px; flex:0 0 18px;
@@ -469,7 +454,7 @@ textarea{ resize:vertical; min-height:120px }
 </svg>");
 }
 
-/* 3) Mail: agregar ícono */
+/* Mail: ícono */
 .branches .card .card__list a[href^="mailto:"]{
   display:inline-flex; align-items:center; gap:.45rem;
 }
@@ -483,7 +468,7 @@ textarea{ resize:vertical; min-height:120px }
 </svg>");
 }
 
-/* 4) Maps en “Cómo llegar” mediante clase .map-link (si no usás SVG inline) */
+/* Maps ícono en “Cómo llegar” si se usa .map-link */
 .branches .card .card__actions a.map-link{
   display:inline-flex; align-items:center; gap:.55rem;
 }
@@ -506,19 +491,20 @@ textarea{ resize:vertical; min-height:120px }
   .carousel{ height:52vh; min-height:300px; }
 }
 
-/* Móvil: header centrado + logo más grande + Tienda compacta + carrusel OFF */
+/* Móvil: header centrado, logo más grande, TIENDA compacta,
+   y el contenedor del menú del tamaño del botón */
 @media (max-width:680px){
 
-  /* Header centrado y más compacto (pero con logo grande) */
+  /* Header compacto y centrado */
   .header__inner{
     position:relative;
     justify-content:center;
-    padding:4px 0;
+    padding:4px 0;   /* reduce alto total */
     gap:8px;
   }
   .brand{ margin:0 auto; }
   .logo{
-    height:90px;  /* pedido: logo más grande en móvil */
+    height:64px;     /* logo más grande y centrado */
     width:auto;
   }
 
@@ -528,615 +514,44 @@ textarea{ resize:vertical; min-height:120px }
     right:10px;
     top:50%;
     transform:translateY(-50%);
-    width:36px;
-    height:36px;
+    width:36px; height:36px;
   }
 
-  /* Panel del menú más arriba para acompañar el header */
-  .nav{ inset:72px 0 auto 0; }
-
-  .nav--modern{
-    padding:10px 12px;
-    font-size:.95rem;
-    gap:10px;
-  }
-
-  /* Botón Tienda compacto; la caja se adapta a su altura */
-  .header .btn--store{
-    display:inline-flex;
-    width:auto;            /* no 100% */
-    align-self:center;     /* centrado dentro del panel */
-    padding:8px 14px;      /* menos alto */
-    line-height:1;         /* altura exacta del contenido */
-    font-size:0.98rem;
-    margin-top:4px;
-  }
-
-  /* Ocultar carrusel y mostrar fallback de texto */
-  .carousel{ display:none !important; }
-  .hero-fallback{
-    display:flex;
-    align-items:center; justify-content:center; flex-direction:column;
-    text-align:center; min-height:46vh; padding:24px 16px;
-  }
-
-  /* Acciones en columna dentro de cards (mejor toque) */
-  .card__actions{ display:flex; flex-direction:column; gap:8px; }
-}
-
-/* Pantallas muy pequeñas ≤ 380px (opcional) */
-@media (max-width:380px){
-  .logo{ max-width:110px; }
-  .header .btn--store{ font-size:0.9rem; padding:8px 0; }
-}
-/* =========================================================
-   PINTURERÍA SILVA – UI BASE (COMPLETO)
-   ========================================================= */
-
-:root{
-  /* Paleta */
-  --brown:#3b2b23;
-  --yellow:#ffd700;
-  --cream:#f7f3ee;
-
-  /* Texto */
-  --text:#1e1e1e;
-  --muted:#6b6b6b;
-
-  /* Tokens */
-  --radius:14px;
-  --shadow:0 12px 28px rgba(0,0,0,.08);
-  --ease-out:cubic-bezier(.16,1,.3,1);
-  --glow:0 8px 24px rgba(255,215,0,.22);
-
-  /* Tamaños */
-  --social-size:36px;
-  --nav-social-size:44px;
-}
-
-/* ===== Reset + base tipográfica ===== */
-*{ box-sizing:border-box }
-html{ scroll-behavior:smooth }
-body{
-  margin:0;
-  color:var(--text);
-  background:#fff;
-  font-family:'Open Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  line-height:1.5;
-}
-img{ max-width:100%; display:block }
-a{ color:inherit; text-decoration:none }
-
-/* ===== Accesibilidad: skip link ===== */
-.skip-link{
-  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden
-}
-.skip-link:focus{
-  left:16px; top:16px; width:auto; height:auto;
-  background:#fff; padding:8px 12px; border-radius:8px;
-  box-shadow:0 6px 18px rgba(0,0,0,.12)
-}
-
-/* ===== Contenedores y secciones ===== */
-.container{ width:min(1140px,92%); margin-inline:auto }
-.section{ padding:76px 0 }
-.section--alt{ background:var(--cream) }
-.section__title{
-  font-family:'Poppins',sans-serif; font-weight:700;
-  font-size:clamp(1.6rem,2.2vw,2.2rem);
-  margin:0 0 10px; color:var(--brown);
-}
-.section__subtitle{ margin:0 0 28px; color:var(--muted) }
-
-/* Despeje para anclas bajo header sticky */
-section[id]{ scroll-margin-top: 96px; }
-@media (min-width:861px){
-  section[id]{ scroll-margin-top: 110px; }
-}
-
-/* =========================================================
-   HEADER STICKY + PROGRESO DE LECTURA
-   ========================================================= */
-.header{
-  position:sticky; top:0; z-index:20;
-  background:#000; /* Header negro solicitado */
-  color:#fff;
-  box-shadow:0 4px 16px rgba(0,0,0,.18);
-  transition:transform .35s var(--ease-out), background .35s var(--ease-out);
-}
-.header--scrolled{ background:#000; transform:translateY(-6px) }
-
-.header__inner{ display:flex; align-items:center; gap:16px; padding:12px 0 }
-.brand{ display:flex; align-items:center }
-.logo{ height:56px }
-@media (min-width:861px){
-  .logo{ height:72px }
-  .header--scrolled .logo{ height:64px }
-}
-
-/* Barra de progreso (lectura) */
-.header__progress{
-  position:absolute; left:0; right:0; bottom:0;
-  height:3px; background:rgba(255,255,255,.10); overflow:hidden; pointer-events:none;
-}
-.header__progress .bar{
-  display:block; height:100%; width:0%;
-  background:linear-gradient(90deg,#ffdf6d,#ffd700);
-  box-shadow:0 2px 8px rgba(255,215,0,.35) inset;
-  transition:width .15s linear;
-}
-
-/* =========================================================
-   NAVEGACIÓN (Desktop + Mobile) – Menú moderno
-   ========================================================= */
-.nav{ display:flex; gap:22px; align-items:center; margin-left:auto }
-.nav a{
-  color:#fff; font-weight:600; position:relative;
-  font-family:'Poppins',sans-serif; font-size:.98rem; padding:6px 0;
-}
-
-/* Toggle móvil */
-.nav-toggle{ display:none; width:44px; height:44px; border:none; background:transparent; margin-left:auto; cursor:pointer }
-.nav-toggle span{ display:block; height:3px; background:#fff; margin:7px 0; border-radius:2px }
-
-@media (max-width:860px){
-  .nav-toggle{ display:block }
+  /* Menú móvil: sin aire extra (alto = botón) */
   .nav{
-    position:fixed; inset:64px 0 auto 0; background:#000; /* mantiene negro en mobile */
-    flex-direction:column; gap:18px; padding:18px;
-    transform:translateY(-120%); transition:transform .25s var(--ease-out);
-    box-shadow:0 8px 20px rgba(0,0,0,.3);
+    inset:72px 0 auto 0;   /* baja justo debajo del header */
+    padding:6px 8px;       /* muy poco padding vertical */
+    row-gap:6px;
   }
-  .nav.is-open{ transform:translateY(0) }
-}
-
-/* ---- Pills + Indicador ---- */
-.nav--modern{ position:relative; gap:6px }
-.nav--modern a{
-  position:relative; z-index:1;
-  padding:10px 14px; border-radius:999px; line-height:1; letter-spacing:.2px;
-  transition:
-    background .25s var(--ease-out),
-    color .25s var(--ease-out),
-    transform .15s var(--ease-out),
-    box-shadow .25s var(--ease-out),
-    text-shadow .25s var(--ease-out);
-}
-.nav__indicator{
-  position:absolute; top:50%; left:0; transform:translate(0,-50%);
-  width:0; height:36px; border-radius:999px;
-  background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05));
-  border:1px solid rgba(255,255,255,.14);
-  box-shadow:0 6px 18px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,215,0,.14);
-  opacity:0; pointer-events:none;
-  transition:
-    transform .35s cubic-bezier(.16,1,.3,1),
-    width .35s cubic-bezier(.16,1,.3,1),
-    height .2s cubic-bezier(.16,1,.3,1),
-    opacity .2s ease;
-  /* Pedido: ocultar siempre la burbuja/indicador */
-  display:none !important;
-}
-
-/* Activo: SIN amarillo (halo sutil) */
-.nav--modern a.is-active{
-  color:#fff;
-  background:transparent;
-  border-radius:999px;
-  box-shadow:
-    inset 0 0 0 2px rgba(255,255,255,.20),
-    0 0 10px rgba(255,255,255,.15);
-  transform:none;
-}
-
-/* Hover/focus: iluminar (sin oscurecer) */
-.nav--modern a:not(.btn--store):hover,
-.nav--modern a:not(.btn--store):focus-visible{
-  background:transparent;
-  color:#fff;
-  text-shadow:0 0 6px rgba(255,255,255,.35);
-  box-shadow:
-    inset 0 0 0 2px rgba(255,255,255,.25),
-    0 0 12px rgba(255,255,255,.18);
-  transform:none;
-  outline:none;
-}
-
-/* Redes dentro del menú móvil */
-.nav-social{
-  display:none; width:100%; margin-top:6px; padding-top:12px; border-top:1px solid rgba(255,255,255,.15);
-  justify-content:center; gap:12px;
-}
-@media (max-width:860px){
-  .nav-social{ display:flex }
-  .nav.nav--modern{ border-top-left-radius:18px; border-top-right-radius:18px; outline:1px solid rgba(255,255,255,.10) }
-}
-
-/* =========================================================
-   BOTONES
-   ========================================================= */
-.btn{
-  background:var(--yellow); color:#000; border:none; cursor:pointer;
-  padding:12px 18px; border-radius:10px; font-weight:700;
-  box-shadow:var(--glow);
-  transition:transform .2s var(--ease-out), box-shadow .2s var(--ease-out), background .2s var(--ease-out);
-}
-.btn:hover{ transform:translateY(-2px) scale(1.02); box-shadow:0 10px 28px rgba(255,215,0,.35) }
-
-/* CTA Tienda (principal) */
-.btn--store{
-  --y1:#ffe680; --y2:#ffd700; --y3:#ffb300;
-  display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
-  padding:13px 20px; font-size:1.05rem; line-height:1; font-weight:800; letter-spacing:.4px; text-transform:uppercase;
-  color:#2b1f1a;
-  background:linear-gradient(180deg,var(--y1),var(--y2) 55%,var(--y3));
-  border-radius:999px; border:1px solid rgba(0,0,0,.08);
-  box-shadow:0 6px 18px rgba(255,215,0,.35), inset 0 1px 0 rgba(255,255,255,.65);
-  position:relative;
-}
-.header .btn--store{ padding-block:14px; padding-inline:28px; gap:.75rem }
-.btn--store::before{
-  content:""; width:20px; height:20px; flex:0 0 20px; color:inherit;
-  background:no-repeat center/contain url("data:image/svg+xml;utf8,\
-  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>\
-    <path d='M7 6h12a1 1 0 0 1 .98 1.2l-1.5 8.5A2.5 2.5 0 0 1 16 18H9a2.5 2.5 0 0 1-2.47-2.1L5 5H2V3h3.2a1 1 0 0 1 1 .85L7 6Zm2 15a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm8 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z'/>\
-  </svg>");
-  filter:drop-shadow(0 1px 1px rgba(0,0,0,.15));
-}
-.header .btn--store:hover,
-.header .btn--store:focus-visible{
-  background:linear-gradient(180deg,#fff3a8,#ffe066 55%,#ffc533);
-  color:#2b1f1a;
-  box-shadow:0 14px 34px rgba(255,215,0,.60), 0 0 0 3px rgba(255,215,0,.28), inset 0 1px 0 rgba(255,255,255,.85);
-  transform:translateY(-2px) scale(1.05);
-  outline:none;
-}
-
-/* CTA “shine” para promos, formularios y “Cómo llegar” */
-.btn--shine{
-  position:relative;
-  background:linear-gradient(180deg,#fff3a8,#ffe066 55%,#ffc533);
-  color:#2b1f1a;
-  box-shadow:0 12px 30px rgba(255,215,0,.45), inset 0 1px 0 rgba(255,255,255,.85);
-  display:inline-flex; align-items:center; gap:.55rem;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:12px;
-}
-.btn--shine:hover{ transform:translateY(-2px) }
-
-/* Botón contorno (fallback) */
-.btn--ghost{
-  background:transparent; color:var(--brown); border:2px solid var(--brown);
-  padding:10px 14px; border-radius:10px; font-weight:700;
-  transition:color .2s var(--ease-out), border-color .2s var(--ease-out), transform .2s var(--ease-out);
-}
-.btn--ghost:hover{ transform:translateY(-2px); color:#000; border-color:#000 }
-
-/* =========================================================
-   REDES (desktop y dentro del menú móvil)
-   ========================================================= */
-.social{ display:flex; gap:10px; margin-left:8px }
-.social a{
-  width:var(--social-size); height:var(--social-size); display:grid; place-items:center; border-radius:50%;
-  background:rgba(255,255,255,.12); outline:1px solid rgba(255,255,255,.12);
-  transition:background .2s, transform .2s, outline-color .2s;
-}
-.social a:hover{ background:rgba(255,255,255,.22); outline-color:rgba(255,255,255,.28); transform:translateY(-1px) }
-.social svg{ width:20px; height:20px; fill:#fff; filter:drop-shadow(0 1px 2px rgba(0,0,0,.25)) }
-
-.nav-social a{
-  width:var(--nav-social-size); height:var(--nav-social-size);
-  display:grid; place-items:center; border-radius:50%;
-  background:rgba(255,255,255,.12); outline:1px solid rgba(255,255,255,.12);
-  transition:background .2s, transform .2s, outline-color .2s;
-}
-.nav-social a:hover{ background:rgba(255,255,255,.22); outline-color:rgba(255,255,255,.28); transform:translateY(-1px) }
-.nav-social svg{ width:22px; height:22px; fill:#fff; filter:drop-shadow(0 1px 2px rgba(0,0,0,.25)) }
-
-/* Utilidades de iconos en línea */
-.link-icon{ display:inline-flex; align-items:center; gap:.45rem }
-.icon{ display:inline-block; vertical-align:-2px }
-
-/* =========================================================
-   HERO + DECOR + CARRUSEL
-   ========================================================= */
-.hero{ min-height:72vh; display:grid; place-items:center; background:#0f0e0d; position:relative; overflow:hidden }
-
-.hero-decor .shape{
-  position:absolute; border-radius:50%; filter:blur(12px); opacity:.16; mix-blend-mode:screen; animation:float 14s ease-in-out infinite;
-}
-.shape--1{ width:240px; height:240px; background:#ffd700; top:-60px; left:-60px; animation-duration:16s }
-.shape--2{ width:300px; height:300px; background:#ffb300; bottom:-90px; right:-40px; animation-duration:18s }
-.shape--3{ width:200px; height:200px; background:#ffea80; top:20%; right:20%; animation-duration:20s }
-@keyframes float{ 0%,100%{ transform:translateY(0) translateX(0) } 50%{ transform:translateY(-14px) translateX(8px) } }
-
-.carousel{ position:relative; width:100%; height:72vh; overflow:hidden }
-.slides{ position:relative; width:100%; height:100% }
-
-.slide{
-  position:absolute; inset:0; background-size:cover; background-position:center;
-  opacity:0; transform:scale(1.04);
-  display:flex; align-items:center; justify-content:center; text-align:center; color:#fff;
-  transition:opacity .7s var(--ease-out), transform 1s var(--ease-out);
-}
-.slide.is-active{ opacity:1; transform:scale(1) }
-.slide.is-active::after{ content:""; position:absolute; inset:0; background:radial-gradient(100% 60% at 50% 50%, rgba(0,0,0,0), rgba(0,0,0,.55)) }
-
-.slide__overlay{
-  position:relative; z-index:2; background:rgba(0,0,0,.35);
-  padding:26px 30px; border-radius:14px; backdrop-filter:saturate(1.2) blur(1px);
-}
-.slide__title{
-  font-family:'Poppins',sans-serif; font-weight:700; letter-spacing:.3px;
-  font-size:clamp(1.5rem,3.2vw,2.6rem); margin:0 0 14px;
-}
-@keyframes kenburns{ 0%{ transform:scale(1.06) } 100%{ transform:scale(1) } }
-.slide.is-active{ animation:kenburns 10s ease-out forwards }
-
-/* Controles y dots */
-.ctrl{
-  position:absolute; top:50%; transform:translateY(-50%);
-  background:rgba(0,0,0,.35); color:#fff; border:none; width:46px; height:46px; border-radius:50%;
-  cursor:pointer; font-size:20px; backdrop-filter:blur(2px);
-  transition:background .2s ease, transform .2s ease;
-}
-.ctrl:hover{ background:rgba(0,0,0,.5); transform:translateY(-50%) scale(1.05) }
-.prev{ left:12px } .next{ right:12px }
-
-.dots{ position:absolute; left:0; right:0; bottom:18px; display:flex; gap:10px; justify-content:center; z-index:2 }
-.dot{ width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.6); border:0; cursor:pointer; transition:transform .2s ease, background .2s ease }
-.dot.is-active{ background:#fff; transform:scale(1.12) }
-
-.carousel__progress{ position:absolute; left:0; right:0; bottom:0; height:4px; background:rgba(255,255,255,.15) }
-.carousel__progress .bar{ display:block; height:100%; width:0%; background:linear-gradient(90deg,#ffdf6d,#ffd700); transition:width .1s linear }
-
-/* Fallback de texto (oculto por defecto; lo mostramos en móvil) */
-.hero-fallback{ display:none; }
-.hero-fallback h2{ margin:0 0 .4rem; font-family:'Poppins',sans-serif; }
-.hero-fallback p{ margin:.25rem 0 1rem; }
-
-/* =========================================================
-   GRID + CARDS
-   ========================================================= */
-.grid{ display:grid; gap:22px; grid-template-columns:repeat(12,1fr) }
-
-.card{
-  background:#fff; border-radius:var(--radius); padding:20px; box-shadow:var(--shadow);
-  transform-style:preserve-3d;
-  transition:transform .35s var(--ease-out), box-shadow .35s var(--ease-out);
-}
-.card:hover{ transform:translateY(-6px) rotateX(.8deg) rotateY(.8deg); box-shadow:0 18px 36px rgba(0,0,0,.12) }
-.card__title{ margin:8px 0 8px; font-family:'Poppins',sans-serif; color:var(--brown) }
-.card__list{ list-style:none; padding:0; margin:0 0 14px }
-.card__list li{ margin:6px 0 }
-.card__actions{ display:flex; gap:10px; flex-wrap:wrap }
-
-/* Productos grid responsivo */
-.products .card{ grid-column:span 4 }
-@media (max-width:1000px){ .products .card{ grid-column:span 6 } }
-@media (max-width:640px){ .products .card{ grid-column:span 12 } }
-
-/* Ficha producto – icono superior */
-.card--product{ position:relative; padding-top:26px }
-.prod__icon{
-  width:62px; height:62px; border-radius:50%; background:rgba(255,215,0,.18);
-  display:grid; place-items:center; position:absolute; top:-31px; left:18px; box-shadow:var(--shadow);
-  animation:pop-in .6s var(--ease-out) both;
-}
-@keyframes pop-in{ from{ transform:scale(.8); opacity:0 } to{ transform:scale(1); opacity:1 } }
-
-/* Sucursales grid responsivo */
-.branches .card{ grid-column:span 4 }
-@media (max-width:1000px){ .branches .card{ grid-column:span 6 } }
-@media (max-width:640px){ .branches .card{ grid-column:span 12 } }
-
-/* Empresa (bloques Misión/Visión/etc.) */
-.mandates{ display:grid; gap:22px; grid-template-columns:repeat(12,1fr) }
-.mandate{ grid-column:span 6; background:#fff; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow) }
-.mandate h3{ margin:0 0 8px; color:var(--brown) }
-.mandate p{ margin:0 }
-.mandate ul{ margin:0; padding-left:18px }
-@media (max-width:900px){ .mandate{ grid-column:span 12 } }
-
-/* =========================================================
-   FORMULARIO
-   ========================================================= */
-.contact-form{
-  display:grid; gap:16px; grid-template-columns:repeat(12,1fr);
-  background:#fff; padding:20px; border-radius:var(--radius); box-shadow:var(--shadow);
-}
-.form__row{ grid-column:span 6; display:flex; flex-direction:column; gap:8px }
-.form__row:nth-child(4){ grid-column:span 12 }
-label{ font-weight:700; color:#3b2b23 }
-input,textarea{
-  padding:12px 12px; border:1px solid #ddd; border-radius:10px; font:inherit;
-  transition:border-color .2s ease, box-shadow .2s ease;
-}
-input:focus,textarea:focus{ outline:none; border-color:#ffda55; box-shadow:0 0 0 3px rgba(255,215,0,.25) }
-textarea{ resize:vertical; min-height:120px }
-.contact-form .btn{ grid-column:span 12; justify-self:start }
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-.footer{
-  background:var(--yellow); /* Footer amarillo solicitado */
-  color:#000; /* Texto negro */
-  padding:20px 0; margin-top:28px;
-  border-top:4px solid #000; /* Línea negra en parte superior del footer */
-}
-.footer__inner{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap }
-.footer__nav{ display:flex; gap:16px; flex-wrap:wrap }
-.footer__nav a{ color:#000 }
-.footer__nav a:hover{ text-decoration:underline }
-.to-top{
-  color:#000; border:1px solid rgba(0,0,0,.4);
-  padding:6px 10px; border-radius:8px; transition:transform .2s ease, background .2s ease;
-}
-.to-top:hover{ transform:translateY(-2px); background:rgba(0,0,0,.08) }
-
-.footer__brand{ display:flex; align-items:center; gap:10px }
-.footer__brand img{ height:44px; width:auto; display:block; filter:drop-shadow(0 1px 2px rgba(0,0,0,.25)) }
-.footer__brand small{ color:#000; font-weight:600; letter-spacing:.2px }
-@media (max-width:720px){
-  .footer__brand{ width:100%; justify-content:center; text-align:center; gap:8px; margin-bottom:6px; flex-wrap:wrap }
-  .footer__brand small{ flex-basis:100% }
-}
-
-/* =========================================================
-   REVEAL-ON-SCROLL + REDUCED MOTION
-   ========================================================= */
-.reveal{
-  opacity:0; transform:translateY(22px) scale(.98);
-  transition:opacity .7s var(--ease-out), transform .7s var(--ease-out);
-}
-.reveal.in-view{ opacity:1; transform:translateY(0) scale(1) }
-.delay-1{ transition-delay:.1s } .delay-2{ transition-delay:.2s }
-
-@media (prefers-reduced-motion:reduce){
-  *{ animation:none !important; transition:none !important }
-}
-
-/* =========================================================
-   AJUSTES ESPECÍFICOS SOLICITADOS PARA SUCURSALES
-   - “Cómo llegar” con estilo de “Ver productos”
-   - Icono de WhatsApp en enlaces wa.me
-   - Icono de Mail en enlaces mailto:
-   - Icono de Maps en botón “Cómo llegar” (si se usa clase .map-link)
-   ========================================================= */
-
-/* 1) “Cómo llegar” = botón shine (aunque el HTML tenga .btn--ghost) */
-.branches .card .card__actions .btn--ghost{
-  background:linear-gradient(180deg,#fff3a8,#ffe066 55%,#ffc533) !important;
-  color:#2b1f1a !important;
-  border:1px solid rgba(0,0,0,.08) !important;
-  box-shadow:0 12px 30px rgba(255,215,0,.45), inset 0 1px 0 rgba(255,255,255,.85) !important;
-  padding:12px 18px !important;
-  border-radius:12px !important;
-  font-weight:800 !important;
-  text-decoration:none !important;
-  display:inline-flex; align-items:center; gap:.55rem;
-  transition: transform .18s cubic-bezier(.16,1,.3,1), box-shadow .18s cubic-bezier(.16,1,.3,1);
-}
-.branches .card .card__actions .btn--ghost:hover,
-.branches .card .card__actions .btn--ghost:focus-visible{
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 14px 34px rgba(255,215,0,.60), 0 0 0 3px rgba(255,215,0,.18), inset 0 1px 0 rgba(255,255,255,.9) !important;
-  outline: none;
-}
-
-/* 2) WhatsApp: agregar ícono (no duplica si ya usás SVG .link-icon) */
-.branches .card .card__list a[href*="wa.me"]{
-  display:inline-flex; align-items:center; gap:.45rem;
-}
-.branches .card .card__list a.link-icon::before{ content:none !important; } /* evita duplicado si el HTML ya tiene SVG */
-.branches .card .card__list a[href*="wa.me"]:not(.link-icon)::before{
-  content:"";
-  width:18px; height:18px; flex:0 0 18px;
-  filter:drop-shadow(0 1px 1px rgba(0,0,0,.12));
-  background:no-repeat center/contain url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
-  <path fill='%2325D366' d='M.5 24l1.7-6.2a11 11 0 1 1 4.1 4.1L.5 24zM6.7 19a9 9 0 1 0-3.1-3.1L3 19l3.7-.9zM17 13.3c-.2-.1-1.2-.6-1.4-.6s-.3 0-.5.2-.6.6-.7.8-.3.2-.5.1a7.1 7.1 0 0 1-2.1-1.3 7.8 7.8 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.5a3 3 0 0 0 .3-.4 1.6 1.6 0 0 0 .2-.4.5.5 0 0 0 0-.5c0-.1-.5-1.2-.7-1.6s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.4 3 3 0 0 0-1 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4.3 5.3 5.3 0 0 0 2.7 1 2.5 2.5 0 0 0 1.7-.6 2.1 2.1 0 0 0 .7-1.3c.1-.7.1-1.2 0-1.3s-.2-.2-.4-.3z'/>\
-</svg>");
-}
-
-/* 3) Mail: agregar ícono */
-.branches .card .card__list a[href^="mailto:"]{
-  display:inline-flex; align-items:center; gap:.45rem;
-}
-.branches .card .card__list a[href^="mailto:"]::before{
-  content:"";
-  width:18px; height:18px; flex:0 0 18px;
-  filter:drop-shadow(0 1px 1px rgba(0,0,0,.12));
-  background:no-repeat center/contain url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233b2b23'>\
-  <path d='M2 5h20a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1.6 2l7.2 5.4a2 2 0 0 0 2.4 0L20.4 7H3.6z'/>\
-</svg>");
-}
-
-/* 4) Maps en “Cómo llegar” mediante clase .map-link (si no usás SVG inline) */
-.branches .card .card__actions a.map-link{
-  display:inline-flex; align-items:center; gap:.55rem;
-}
-.branches .card .card__actions a.map-link::before{
-  content:"";
-  width:18px; height:18px; flex:0 0 18px;
-  filter:drop-shadow(0 1px 1px rgba(0,0,0,.12));
-  background:no-repeat center/contain url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>\
-  <path d='M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z'/>\
-</svg>");
-}
-
-/* =========================================================
-   RESPONSIVE EXTRAS (tablet + móvil)
-   ========================================================= */
-
-/* Tablet: carrusel más bajo */
-@media (max-width:1024px){
-  .carousel{ height:52vh; min-height:300px; }
-}
-
-/* Móvil: header centrado + logo más grande + Tienda compacta + carrusel OFF */
-@media (max-width:680px){
-
-  /* Header centrado y más compacto (pero con logo grande) */
-  .header__inner{
-    position:relative;
-    justify-content:center;
-    padding:8px 0;
-    gap:8px;
-  }
-  .brand{ margin:0 auto; }
-  .logo{
-    height:64px;  /* pedido: logo más grande en móvil */
-    width:auto;
+  .nav a{
+    padding-top:0; padding-bottom:0;
+    line-height:1;         /* evita sumar alto */
   }
 
-  /* Hamburguesa a la derecha sin descentrar el logo */
-  .nav-toggle{
-    position:absolute;
-    right:10px;
-    top:50%;
-    transform:translateY(-50%);
-    width:36px;
-    height:36px;
-  }
-
-  /* Panel del menú más arriba para acompañar el header */
-  .nav{ inset:72px 0 auto 0; }
-
-  .nav--modern{
-    padding:10px 12px;
-    font-size:.95rem;
-    gap:10px;
-  }
-
-  /* Botón Tienda compacto; la caja se adapta a su altura */
+  /* Botón TIENDA compacto (marca el alto) */
+  .nav .btn--store,
   .header .btn--store{
     display:inline-flex;
-    width:auto;            /* no 100% */
-    align-self:center;     /* centrado dentro del panel */
-    padding:8px 14px;      /* menos alto */
-    line-height:1;         /* altura exacta del contenido */
+    width:auto;            /* evita ancho completo */
+    padding:8px 14px;      /* bajo en altura */
+    line-height:1;
     font-size:0.98rem;
-    margin-top:4px;
+    margin:0;
   }
 
-  /* Ocultar carrusel y mostrar fallback de texto */
+  /* Carrusel OFF y fallback de texto ON */
   .carousel{ display:none !important; }
   .hero-fallback{
-    display:flex;
-    align-items:center; justify-content:center; flex-direction:column;
-    text-align:center; min-height:46vh; padding:24px 16px;
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column; text-align:center; min-height:46vh; padding:24px 16px;
   }
 
-  /* Acciones en columna dentro de cards (mejor toque) */
-  .card__actions{ display:flex; flex-direction:column; gap:8px; }
+  /* Acciones de cards en columna para mejor toque */
+  .card__actions{ flex-direction:column; gap:8px; }
 }
 
-/* Pantallas muy pequeñas ≤ 380px (opcional) */
+/* Pantallas muy pequeñas ≤ 380px */
 @media (max-width:380px){
-  .logo{ max-width:110px; }
+  .logo{ max-width:110px; height:auto; }
   .header .btn--store{ font-size:0.9rem; padding:8px 0; }
 }
