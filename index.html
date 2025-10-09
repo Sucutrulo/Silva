@@ -8,23 +8,20 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
-  <!-- Parche: ocultar el indicador y usar solo sombreado en el ítem activo/hover (sin amarillo) -->
+  <!-- Parche: menú (indicador oculto), redes visibles y resaltado sutil del item activo -->
   <style>
     /* Oculta por completo la “burbuja” del menú */
     .header .nav__indicator{ display:none !important; }
 
-    /* Asegura que los iconos de redes se vean y queden alineados */
+    /* Redes en el header */
     .header .nav-social{
       display:inline-flex; align-items:center; gap:12px; margin-left:12px;
     }
     .header .nav-social a{ display:inline-flex; align-items:center; color:inherit; text-decoration:none; }
     .header .nav-social svg{ width:22px; height:22px; display:block; }
-    @media (max-width:768px){ .header .nav-social{ margin-top:12px; } }
 
-    /* Transición suave para el resaltado del menú */
+    /* Transición suave y resaltado sutil del menú (sin amarillo) */
     .header .nav--modern > a{ transition: box-shadow .2s ease, color .2s ease, background-color .2s ease; }
-
-    /* Ítem activo SIN amarillo: sólo borde con glow sutil (excluye el botón Tienda) */
     .header .nav--modern > a:not(.btn--store).is-active,
     .header .nav--modern > a:not(.btn--store).active,
     .header .nav--modern > a:not(.btn--store)[aria-current="page"],
@@ -32,21 +29,34 @@
       background: transparent !important;
       color: inherit !important;
       border-radius: 8px;
-      /* borde tenue + brillo sutil hacia afuera */
-      box-shadow:
-        inset 0 0 0 2px rgba(0,0,0,.08),
-        0 0 8px rgba(0,0,0,.08);
+      box-shadow: inset 0 0 0 2px rgba(0,0,0,.08), 0 0 8px rgba(0,0,0,.08);
     }
-
-    /* Hover/focus del menú SIN amarillo: mismo criterio sutil */
     .header .nav--modern > a:not(.btn--store):hover,
     .header .nav--modern > a:not(.btn--store):focus-visible{
       background: transparent !important;
       border-radius: 8px;
-      box-shadow:
-        inset 0 0 0 2px rgba(0,0,0,.10),
-        0 0 10px rgba(0,0,0,.10);
+      box-shadow: inset 0 0 0 2px rgba(0,0,0,.10), 0 0 10px rgba(0,0,0,.10);
       outline: none;
+    }
+
+    /* --------- Hero: fallback para móvil --------- */
+    .hero-fallback{ display:none; } /* se muestra solo en móvil */
+    .hero-fallback h2{ font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0 0 .4rem; }
+    .hero-fallback p{ margin:.25rem 0 1rem; }
+    .hero-fallback .btn{ margin-top:.25rem; }
+
+    /* Tablet */
+    @media (max-width: 1024px){
+      .hero .carousel{ height:52vh; min-height:300px; }
+    }
+    /* Móvil: ocultar carrusel y mostrar texto */
+    @media (max-width: 680px){
+      .header .nav-social{ margin-top:12px; }
+      .hero .carousel{ display:none !important; }
+      .hero-fallback{
+        display:flex; align-items:center; justify-content:center; flex-direction:column;
+        text-align:center; min-height:46vh; padding:24px 16px;
+      }
     }
   </style>
 </head>
@@ -119,6 +129,14 @@
       <span class="shape shape--3"></span>
     </div>
 
+    <!-- Fallback para móvil: muestra solo texto y CTA -->
+    <div class="hero-fallback" role="region" aria-label="Promociones destacadas">
+      <h2>Promociones destacadas</h2>
+      <p>Conocé nuestras ofertas y novedades en la tienda online.</p>
+      <a class="btn btn--shine" href="https://www.tienda.silvafast.com.ar/" target="_blank" rel="noopener">Ir a la tienda</a>
+    </div>
+
+    <!-- Carrusel (oculto en móvil) -->
     <div class="carousel" tabindex="0" aria-label="Carrusel de promociones">
       <div class="slides" aria-live="polite" aria-atomic="true">
         <!-- 6 slides: imagen completa clickeable a la tienda, sin botones -->
