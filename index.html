@@ -58,6 +58,43 @@
         text-align:center; min-height:46vh; padding:24px 16px;
       }
     }
+
+    /* =========================================================
+       MÓVIL: Botón TIENDA fuera del header (centrado y elegante)
+       - Oculta el botón del header en móvil
+       - Muestra botón flotante centrado con margen inferior 40px
+       ========================================================= */
+    @media (max-width: 680px){
+      .header .btn--store{
+        display:none !important; /* ocultar botón del header en móvil */
+      }
+      .btn--store--mobile{
+        position:fixed;
+        bottom:40px;          /* margen extra para evitar barras del SO */
+        left:50%;
+        transform:translateX(-50%);
+        z-index:50;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        padding:12px 28px;
+        background:linear-gradient(180deg,#ffe680,#ffd700 55%,#ffb300);
+        color:#2b1f1a;
+        font-weight:800;
+        text-transform:uppercase;
+        border-radius:999px;
+        border:1px solid rgba(0,0,0,.08);
+        box-shadow:0 8px 20px rgba(255,215,0,.4);
+        text-decoration:none;
+        transition:background .2s ease, box-shadow .2s ease;
+      }
+      .btn--store--mobile:hover,
+      .btn--store--mobile:focus-visible{
+        background:linear-gradient(180deg,#fff3a8,#ffe066 55%,#ffc533);
+        box-shadow:0 10px 28px rgba(255,215,0,.55);
+        outline:none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -187,7 +224,7 @@
       <h2 class="section__title reveal">Productos</h2>
       <p class="section__subtitle reveal delay-1">Soluciones para cada necesidad: hogar y obra, automotor, construcción, industria y herramientas.</p>
 
-      <div class="grid products">
+    <div class="grid products">
         <!-- Hogar y Obra -->
         <article class="card card--product reveal">
           <div class="prod__icon" aria-hidden="true">
@@ -470,6 +507,9 @@
       <a class="to-top" href="#top" aria-label="Volver arriba">↑</a>
     </div>
   </footer>
+
+  <!-- Botón Tienda flotante (solo visible en móviles, centrado) -->
+  <a href="https://www.tienda.silvafast.com.ar/" class="btn--store btn--store--mobile" aria-label="Ir a la tienda">Tienda</a>
 
   <script src="script.js"></script>
 </body>

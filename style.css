@@ -68,7 +68,7 @@ section[id]{ scroll-margin-top: 96px; }
    ========================================================= */
 .header{
   position:sticky; top:0; z-index:20;
-  background:#000; /* Header negro solicitado */
+  background:#000; /* Header negro */
   color:#fff;
   box-shadow:0 4px 16px rgba(0,0,0,.18);
   transition:transform .35s var(--ease-out), background .35s var(--ease-out);
@@ -112,7 +112,7 @@ section[id]{ scroll-margin-top: 96px; }
   .nav-toggle{ display:block }
   .nav{
     position:fixed; inset:72px 0 auto 0; background:#000; /* mantiene negro en mobile */
-    flex-direction:column; gap:12px; padding:6px 8px; /* compacto para que el alto sea ~ el del botón */
+    flex-direction:column; gap:12px; padding:6px 8px; /* compacto */
     transform:translateY(-120%); transition:transform .25s var(--ease-out);
     box-shadow:0 8px 20px rgba(0,0,0,.3);
   }
@@ -132,23 +132,21 @@ section[id]{ scroll-margin-top: 96px; }
     text-shadow .25s var(--ease-out);
 }
 
-/* Indicador: oculto siempre (evita “burbuja” por debajo del hover) */
-.nav__indicator{
-  display:none !important;
-}
+/* Indicador (visible si se usa; en tu HTML se oculta con inline CSS) */
+.nav__indicator{ height:3px; background:var(--yellow); border-radius:2px; position:absolute; bottom:-4px; left:0; right:auto; width:0 }
 
-/* Activo: SIN amarillo. Halo/sombreado sutil */
+/* Activo */
 .nav--modern a.is-active{
   color:#fff;
   background:transparent;
   border-radius:999px;
   box-shadow:
     inset 0 0 0 2px rgba(255,255,255,.20),
-    0 0 10px rgba(255,255,255,.15);
+    0 0 10px rgba(255,255,0,.15);
   transform:none;
 }
 
-/* Hover/focus: iluminar (sin oscurecer) */
+/* Hover/focus */
 .nav--modern a:not(.btn--store):hover,
 .nav--modern a:not(.btn--store):focus-visible{
   background:transparent;
@@ -193,42 +191,11 @@ section[id]{ scroll-margin-top: 96px; }
   position:relative;
 }
 .header .btn--store{ padding-block:14px; padding-inline:28px; gap:.75rem }
-.btn--store::before{
-  content:""; width:20px; height:20px; flex:0 0 20px; color:inherit;
-  background:no-repeat center/contain url("data:image/svg+xml;utf8,\
-  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>\
-    <path d='M7 6h12a1 1 0 0 1 .98 1.2l-1.5 8.5A2.5 2.5 0 0 1 16 18H9a2.5 2.5 0 0 1-2.47-2.1L5 5H2V3h3.2a1 1 0 0 1 1 .85L7 6Zm2 15a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm8 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z'/>\
-  </svg>");
-  filter:drop-shadow(0 1px 1px rgba(0,0,0,.15));
-}
-.header .btn--store:hover,
-.header .btn--store:focus-visible{
-  background:linear-gradient(180deg,#fff3a8,#ffe066 55%,#ffc533);
-  color:#2b1f1a;
-  box-shadow:0 14px 34px rgba(255,215,0,.60), 0 0 0 3px rgba(255,215,0,.28), inset 0 1px 0 rgba(255,255,255,.85);
-  transform:translateY(-2px) scale(1.05);
-  outline:none;
-}
 
-/* CTA “shine” (promos, formularios y “Cómo llegar”) */
-.btn--shine{
-  position:relative;
-  background:linear-gradient(180deg,#fff3a8,#ffe066 55%,#ffc533);
-  color:#2b1f1a;
-  box-shadow:0 12px 30px rgba(255,215,0,.45), inset 0 1px 0 rgba(255,255,255,.85);
-  display:inline-flex; align-items:center; gap:.55rem;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:12px;
+/* Botón flotante de Tienda (MÓVIL): oculto por defecto */
+.btn--store--mobile{
+  display: none; /* <-- evita que aparezca en escritorio/tablet */
 }
-.btn--shine:hover{ transform:translateY(-2px) }
-
-/* Botón contorno (fallback) */
-.btn--ghost{
-  background:transparent; color:var(--brown); border:2px solid var(--brown);
-  padding:10px 14px; border-radius:10px; font-weight:700;
-  transition:color .2s var(--ease-out), border-color .2s var(--ease-out), transform .2s var(--ease-out);
-}
-.btn--ghost:hover{ transform:translateY(-2px); color:#000; border-color:#000 }
 
 /* =========================================================
    REDES (desktop y dentro del menú móvil)
@@ -308,7 +275,7 @@ section[id]{ scroll-margin-top: 96px; }
 .carousel__progress{ position:absolute; left:0; right:0; bottom:0; height:4px; background:rgba(255,255,255,.15) }
 .carousel__progress .bar{ display:block; height:100%; width:0%; background:linear-gradient(90deg,#ffdf6d,#ffd700); transition:width .1s linear }
 
-/* Fallback de texto (oculto por defecto; se muestra en móvil) */
+/* Fallback de texto (oculto por defecto; el HTML lo controla en mobile con CSS inline) */
 .hero-fallback{ display:none; }
 .hero-fallback h2{ margin:0 0 .4rem; font-family:'Poppins',sans-serif; }
 .hero-fallback p{ margin:.25rem 0 1rem; }
@@ -378,10 +345,10 @@ textarea{ resize:vertical; min-height:120px }
    FOOTER
    ========================================================= */
 .footer{
-  background:var(--yellow); /* Footer amarillo solicitado */
-  color:#000; /* Texto negro */
+  background:var(--yellow);
+  color:#000;
   padding:20px 0; margin-top:28px;
-  border-top:4px solid #000; /* Línea negra en parte superior del footer */
+  border-top:4px solid #000;
 }
 .footer__inner{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap }
 .footer__nav{ display:flex; gap:16px; flex-wrap:wrap }
@@ -416,99 +383,64 @@ textarea{ resize:vertical; min-height:120px }
 }
 
 /* =========================================================
-   AJUSTES ESPECÍFICOS PARA SUCURSALES (WA / MAIL / MAPS + “Cómo llegar”)
+   RESPONSIVE EXTRAS (tablet)
    ========================================================= */
-
-/* “Cómo llegar” = botón shine (aunque el HTML tenga .btn--ghost) */
-.branches .card .card__actions .btn--ghost{
-  background:linear-gradient(180deg,#fff3a8,#ffe066 55%,#ffc533) !important;
-  color:#2b1f1a !important;
-  border:1px solid rgba(0,0,0,.08) !important;
-  box-shadow:0 12px 30px rgba(255,215,0,.45), inset 0 1px 0 rgba(255,255,255,.85) !important;
-  padding:12px 18px !important;
-  border-radius:12px !important;
-  font-weight:800 !important;
-  text-decoration:none !important;
-  display:inline-flex; align-items:center; gap:.55rem;
-  transition: transform .18s cubic-bezier(.16,1,.3,1), box-shadow .18s cubic-bezier(.16,1,.3,1);
-}
-.branches .card .card__actions .btn--ghost:hover,
-.branches .card .card__actions .btn--ghost:focus-visible{
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 14px 34px rgba(255,215,0,.60), 0 0 0 3px rgba(255,215,0,.18), inset 0 1px 0 rgba(255,255,255,.9) !important;
-  outline: none;
-}
-
-/* WhatsApp: ícono */
-.branches .card .card__list a[href*="wa.me"]{
-  display:inline-flex; align-items:center; gap:.45rem;
-}
-.branches .card .card__list a.link-icon::before{ content:none !important; }
-.branches .card .card__list a[href*="wa.me"]:not(.link-icon)::before{
-  content:"";
-  width:18px; height:18px; flex:0 0 18px;
-  filter:drop-shadow(0 1px 1px rgba(0,0,0,.12));
-  background:no-repeat center/contain url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
-  <path fill='%2325D366' d='M.5 24l1.7-6.2a11 11 0 1 1 4.1 4.1L.5 24zM6.7 19a9 9 0 1 0-3.1-3.1L3 19l3.7-.9zM17 13.3c-.2-.1-1.2-.6-1.4-.6s-.3 0-.5.2-.6.6-.7.8-.3.2-.5.1a7.1 7.1 0 0 1-2.1-1.3 7.8 7.8 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.5a3 3 0 0 0 .3-.4 1.6 1.6 0 0 0 .2-.4.5.5 0 0 0 0-.5c0-.1-.5-1.2-.7-1.6s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.4 3 3 0 0 0-1 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4.3 5.3 5.3 0 0 0 2.7 1 2.5 2.5 0 0 0 1.7-.6 2.1 2.1 0 0 0 .7-1.3c.1-.7.1-1.2 0-1.3s-.2-.2-.4-.3z'/>\
-</svg>");
-}
-
-/* Mail: ícono */
-.branches .card .card__list a[href^="mailto:"]{
-  display:inline-flex; align-items:center; gap:.45rem;
-}
-.branches .card .card__list a[href^="mailto:"]::before{
-  content:"";
-  width:18px; height:18px; flex:0 0 18px;
-  filter:drop-shadow(0 1px 1px rgba(0,0,0,.12));
-  background:no-repeat center/contain url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233b2b23'>\
-  <path d='M2 5h20a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1.6 2l7.2 5.4a2 2 0 0 0 2.4 0L20.4 7H3.6z'/>\
-</svg>");
-}
-
-/* Maps ícono en “Cómo llegar” si se usa .map-link */
-.branches .card .card__actions a.map-link{
-  display:inline-flex; align-items:center; gap:.55rem;
-}
-.branches .card .card__actions a.map-link::before{
-  content:"";
-  width:18px; height:18px; flex:0 0 18px;
-  filter:drop-shadow(0 1px 1px rgba(0,0,0,.12));
-  background:no-repeat center/contain url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>\
-  <path d='M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z'/>\
-</svg>");
-}
-
-/* =========================================================
-   RESPONSIVE EXTRAS (tablet + móvil)
-   ========================================================= */
-
-/* Tablet: carrusel más bajo */
 @media (max-width:1024px){
   .carousel{ height:52vh; min-height:300px; }
 }
 
-/* Móvil: header centrado, logo más grande, TIENDA compacta,
-   y el contenedor del menú del tamaño del botón */
+/* =========================================================
+   SOLO MÓVIL (≤ 860px): mejoras de lectura y compacidad
+   ========================================================= */
+@media (max-width: 860px){
+
+  /* Header un poco más bajo sin tocar escritorio */
+  .header__inner{ padding:8px 0; gap:10px; }
+  .logo{ height:50px; }
+
+  /* Secciones más compactas */
+  .section { padding: 44px 0; }
+
+  /* Tipografía */
+  .section__title { font-size: clamp(1.3rem, 4.8vw, 1.7rem); }
+  .section__subtitle { font-size: 0.98rem; }
+
+  /* Cards y botones */
+  .card { padding: 16px; box-shadow: 0 6px 16px rgba(0,0,0,.08); }
+  .card__title { margin: 6px 0 8px; font-size: 1.05rem; }
+  .card__actions { gap: 8px; }
+  .btn, .btn--ghost, .btn--shine, .btn--store { min-height: 44px; }
+
+  /* Grilla */
+  .grid { gap: 16px; }
+
+  /* Formulario */
+  .contact-form { gap: 12px; padding: 16px; }
+  .form__row { gap: 6px; }
+  input, textarea { padding: 12px; font-size: 1rem; }
+
+  /* Listas sucursales un poco más respirables */
+  .card__list li { margin: 4px 0; }
+
+  /* Scroll margin por header más bajo */
+  section[id]{ scroll-margin-top: 84px; }
+}
+
+/* =========================================================
+   MÓVIL ESTRECHO (≤ 680px): alineaciones y toques finales
+   ========================================================= */
 @media (max-width:680px){
 
-  /* Header compacto y centrado */
+  /* Centrar header sin afectar desktop */
   .header__inner{
     position:relative;
     justify-content:center;
-    padding:4px 0;   /* reduce alto total */
-    gap:8px;
+    padding:6px 0;
   }
   .brand{ margin:0 auto; }
-  .logo{
-    height:64px;     /* logo más grande y centrado */
-    width:auto;
-  }
+  .logo{ height:62px; width:auto; }
 
-  /* Hamburguesa a la derecha sin descentrar el logo */
+  /* Hamburguesa a la derecha */
   .nav-toggle{
     position:absolute;
     right:10px;
@@ -517,41 +449,82 @@ textarea{ resize:vertical; min-height:120px }
     width:36px; height:36px;
   }
 
-  /* Menú móvil: sin aire extra (alto = botón) */
-  .nav{
-    inset:72px 0 auto 0;   /* baja justo debajo del header */
-    padding:6px 8px;       /* muy poco padding vertical */
-    row-gap:6px;
-  }
-  .nav a{
-    padding-top:0; padding-bottom:0;
-    line-height:1;         /* evita sumar alto */
-  }
+  /* Menú del alto del botón (compacto) */
+  .nav{ inset:72px 0 auto 0; padding:6px 8px; row-gap:6px; }
+  .nav a{ padding-top:0; padding-bottom:0; line-height:1; }
 
-  /* Botón TIENDA compacto (marca el alto) */
-  .nav .btn--store,
-  .header .btn--store{
-    display:inline-flex;
-    width:auto;            /* evita ancho completo */
-    padding:8px 14px;      /* bajo en altura */
-    line-height:1;
-    font-size:0.98rem;
-    margin:0;
-  }
-
-  /* Carrusel OFF y fallback de texto ON */
-  .carousel{ display:none !important; }
-  .hero-fallback{
-    display:flex; align-items:center; justify-content:center;
-    flex-direction:column; text-align:center; min-height:46vh; padding:24px 16px;
-  }
-
-  /* Acciones de cards en columna para mejor toque */
+  /* Acciones de cards en columna: más fácil de tocar */
   .card__actions{ flex-direction:column; gap:8px; }
+}
+
+/* =========================================================
+   NUEVO: CAMBIOS SOLICITADOS PARA MÓVIL (≤ 680px)
+   - Ocultar #hero por completo
+   - Mostrar, mover y achicar botón flotante .btn--store--mobile
+   ========================================================= */
+@media (max-width: 680px){
+
+  /* 1) Ocultar toda la sección hero (decor, fallback y carrusel) */
+  #hero{
+    display: none !important;
+  }
+
+  /* 2) Botón TIENDA flotante visible y ubicado abajo a la derecha */
+  .btn--store--mobile{
+    display: inline-flex !important; /* visible solo en móviles */
+    left: auto !important;
+    transform: none !important;
+    right: 16px !important;
+    bottom: 16px !important;
+    padding: 9px 14px !important;
+    font-size: 0.95rem !important;
+    border-radius: 999px !important;
+    box-shadow: 0 10px 22px rgba(255,215,0,.40) !important;
+  }
 }
 
 /* Pantallas muy pequeñas ≤ 380px */
 @media (max-width:380px){
   .logo{ max-width:110px; height:auto; }
-  .header .btn--store{ font-size:0.9rem; padding:8px 0; }
+}
+
+/* =========================================================
+   SUCURSALES: ícono de WhatsApp junto al número (wa.me)
+   ========================================================= */
+.branches .card .card__list a[href*="wa.me"]{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  text-decoration:none;
+}
+
+.branches .card .card__list a[href*="wa.me"]::before{
+  content:"";
+  width:18px;
+  height:18px;
+  flex:0 0 18px;
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.12));
+  background:no-repeat center/contain url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+  <path fill='%2325D366' d='M.5 24l1.7-6.2a11 11 0 1 1 4.1 4.1L.5 24zM6.7 19a9 9 0 1 0-3.1-3.1L3 19l3.7-.9zM17 13.3c-.2-.1-1.2-.6-1.4-.6s-.3 0-.5.2-.6.6-.7.8-.3.2-.5.1a7.1 7.1 0 0 1-2.1-1.3 7.8 7.8 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.5a3 3 0 0 0 .3-.4 1.6 1.6 0 0 0 .2-.4.5.5 0 0 0 0-.5c0-.1-.5-1.2-.7-1.6s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.4 3 3 0  0 0-1 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4.3 5.3 5.3 0  0 0 2.7 1 2.5 2.5 0 0 0 1.7-.6 2.1 2.1 0 0 0 .7-1.3c.1-.7.1-1.2 0-1.3s-.2-.2-.4-.3z'/>\
+</svg>");
+}
+
+/* =========================================================
+   SUCURSALES: hover/focus en WhatsApp
+   - subraya y usa el verde oficial #25D366
+   ========================================================= */
+.branches .card .card__list a[href*="wa.me"]{
+  color: inherit;
+  text-decoration: none;
+  transition: color .2s ease, text-decoration-color .2s ease;
+  text-underline-offset: 2px;
+}
+
+.branches .card .card__list a[href*="wa.me"]:hover,
+.branches .card .card__list a[href*="wa.me"]:focus-visible{
+  color: #25D366;               /* verde WhatsApp */
+  text-decoration: underline;
+  text-decoration-color: #25D366;
+  outline: none;
 }
