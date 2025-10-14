@@ -142,7 +142,7 @@ section[id]{ scroll-margin-top: 96px; }
   border-radius:999px;
   box-shadow:
     inset 0 0 0 2px rgba(255,255,255,.20),
-    0 0 10px rgba(255,255,0,.15);
+    0 0 10px rgba(255,255,255,.15);
   transform:none;
 }
 
@@ -461,7 +461,13 @@ textarea{ resize:vertical; min-height:120px }
    NUEVO: CAMBIOS SOLICITADOS PARA MÓVIL (≤ 680px)
    - Ocultar #hero por completo
    - Mostrar, mover y achicar botón flotante .btn--store--mobile
+   - FAB group para TIENDA + WHATSAPP (solo móvil)
+   - Centrar texto del botón de productos en móvil
    ========================================================= */
+
+/* Por defecto, el FAB está oculto (escritorio/tablet) */
+.mobile-fab{ display:none; }
+
 @media (max-width: 680px){
 
   /* 1) Ocultar toda la sección hero (decor, fallback y carrusel) */
@@ -469,17 +475,68 @@ textarea{ resize:vertical; min-height:120px }
     display: none !important;
   }
 
-  /* 2) Botón TIENDA flotante visible y ubicado abajo a la derecha */
+  /* 2) Grupo FAB fijo abajo-derecha (contiene Tienda + WhatsApp) */
+  .mobile-fab{
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    display: flex;
+    gap: 10px;
+    z-index: 60;
+  }
+
+  /* 2.a) Tienda (visible en móvil) */
   .btn--store--mobile{
-    display: inline-flex !important; /* visible solo en móviles */
-    left: auto !important;
-    transform: none !important;
-    right: 16px !important;
-    bottom: 16px !important;
+    display: inline-flex !important;
+    align-items:center; justify-content:center;
     padding: 9px 14px !important;
     font-size: 0.95rem !important;
     border-radius: 999px !important;
     box-shadow: 0 10px 22px rgba(255,215,0,.40) !important;
+  }
+
+  /* 2.b) WhatsApp: SOLO ÍCONO (botón redondo) */
+  .btn--wa--mobile{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    background: #25D366;
+    border: 1px solid rgba(0,0,0,.08);
+    box-shadow: 0 10px 22px rgba(0,0,0,.18);
+    transition: transform .18s cubic-bezier(.16,1,.3,1),
+                box-shadow .18s cubic-bezier(.16,1,.3,1),
+                filter .18s;
+    overflow: hidden;
+  }
+  .btn--wa--mobile:hover,
+  .btn--wa--mobile:focus-visible{
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 14px 28px rgba(0,0,0,.22);
+    outline: none;
+    filter: saturate(1.05);
+  }
+  .btn--wa--mobile::before{
+    content:"";
+    width: 22px;
+    height: 22px;
+    background: no-repeat center/contain url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+  <path fill='%23FFFFFF' d='M.5 24l1.7-6.2a11 11 0 1 1 4.1 4.1L.5 24zM6.7 19a9 9 0 1 0-3.1-3.1L3 19l3.7-.9zM17 13.3c-.2-.1-1.2-.6-1.4-.6s-.3 0-.5.2-.6.6-.7.8-.3.2-.5.1a7.1 7.1 0 0 1-2.1-1.3 7.8 7.8 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.5a3 3 0 0 0 .3-.4 1.6 1.6 0 0 0 .2-.4.5.5 0 0 0 0-.5c0-.1-.5-1.2-.7-1.6s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.4 3 3 0 0 0-1 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4.3 5.3 5.3 0 0 0 2.7 1 2.5 2.5 0 0 0 1.7-.6 2.1 2.1 0 0 0 .7-1.3c.1-.7.1-1.2 0-1.3s-.2-.2-.4-.3z'/>\
+</svg>");
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,.15));
+  }
+
+  /* 3) Centrar el texto de los botones de productos */
+  .products .card .btn,
+  .products .card .btn--shine{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;   /* <-- centrado del texto */
+    text-align: center;        /* <-- por si hay saltos de línea */
   }
 }
 
@@ -506,13 +563,12 @@ textarea{ resize:vertical; min-height:120px }
   filter:drop-shadow(0 1px 1px rgba(0,0,0,.12));
   background:no-repeat center/contain url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
-  <path fill='%2325D366' d='M.5 24l1.7-6.2a11 11 0 1 1 4.1 4.1L.5 24zM6.7 19a9 9 0 1 0-3.1-3.1L3 19l3.7-.9zM17 13.3c-.2-.1-1.2-.6-1.4-.6s-.3 0-.5.2-.6.6-.7.8-.3.2-.5.1a7.1 7.1 0 0 1-2.1-1.3 7.8 7.8 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.5a3 3 0 0 0 .3-.4 1.6 1.6 0 0 0 .2-.4.5.5 0 0 0 0-.5c0-.1-.5-1.2-.7-1.6s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.4 3 3 0  0 0-1 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4.3 5.3 5.3 0  0 0 2.7 1 2.5 2.5 0 0 0 1.7-.6 2.1 2.1 0 0 0 .7-1.3c.1-.7.1-1.2 0-1.3s-.2-.2-.4-.3z'/>\
+  <path fill='%2325D366' d='M.5 24l1.7-6.2a11 11 0 1 1 4.1 4.1L.5 24zM6.7 19a9 9 0 1 0-3.1-3.1L3 19l3.7-.9zM17 13.3c-.2-.1-1.2-.6-1.4-.6s-.3 0-.5.2-.6.6-.7.8-.3.2-.5.1a7.1 7.1 0 0 1-2.1-1.3 7.8 7.8 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.5a3 3 0 0 0 .3-.4 1.6 1.6 0 0 0 .2-.4.5.5 0 0 0 0-.5c0-.1-.5-1.2-.7-1.6s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.4 3 3 0 0 0-1 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4.3 5.3 5.3 0 0 0 2.7 1 2.5 2.5 0 0 0 1.7-.6 2.1 2.1 0 0 0 .7-1.3c.1-.7.1-1.2 0-1.3s-.2-.2-.4-.3z'/>\
 </svg>");
 }
 
 /* =========================================================
-   SUCURSALES: hover/focus en WhatsApp
-   - subraya y usa el verde oficial #25D366
+   SUCURSALES: hover/focus en WhatsApp (subrayado + color)
    ========================================================= */
 .branches .card .card__list a[href*="wa.me"]{
   color: inherit;
@@ -527,4 +583,35 @@ textarea{ resize:vertical; min-height:120px }
   text-decoration: underline;
   text-decoration-color: #25D366;
   outline: none;
+}
+
+/* =========================================================
+   RESALTAR botones ghost EN MÓVIL (≤ 680px)
+   - “Consultar” (Productos) y “Cómo llegar” (Sucursales)
+   ========================================================= */
+@media (max-width:680px){
+  .products .card .btn--ghost,
+  .branches .card .btn--ghost{
+    background:linear-gradient(180deg,#fff3a8,#ffe066 55%,#ffc533) !important;
+    color:#2b1f1a !important;
+    border:1px solid rgba(0,0,0,.08) !important;
+    border-radius:12px !important;
+    font-weight:800 !important;
+    box-shadow:0 12px 30px rgba(255,215,0,.45), inset 0 1px 0 rgba(255,255,255,.85) !important;
+    padding:12px 18px !important;
+    text-decoration:none !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    transition: transform .18s cubic-bezier(.16,1,.3,1), box-shadow .18s cubic-bezier(.16,1,.3,1);
+  }
+
+  .products .card .btn--ghost:hover,
+  .products .card .btn--ghost:focus-visible,
+  .branches .card .btn--ghost:hover,
+  .branches .card .btn--ghost:focus-visible{
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 14px 34px rgba(255,215,0,.60), 0 0 0 3px rgba(255,215,0,.18), inset 0 1px 0 rgba(255,255,255,.9) !important;
+    outline: none;
+  }
 }

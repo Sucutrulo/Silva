@@ -57,43 +57,8 @@
         display:flex; align-items:center; justify-content:center; flex-direction:column;
         text-align:center; min-height:46vh; padding:24px 16px;
       }
-    }
-
-    /* =========================================================
-       MÓVIL: Botón TIENDA fuera del header (centrado y elegante)
-       - Oculta el botón del header en móvil
-       - Muestra botón flotante centrado con margen inferior 40px
-       ========================================================= */
-    @media (max-width: 680px){
-      .header .btn--store{
-        display:none !important; /* ocultar botón del header en móvil */
-      }
-      .btn--store--mobile{
-        position:fixed;
-        bottom:40px;          /* margen extra para evitar barras del SO */
-        left:50%;
-        transform:translateX(-50%);
-        z-index:50;
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        padding:12px 28px;
-        background:linear-gradient(180deg,#ffe680,#ffd700 55%,#ffb300);
-        color:#2b1f1a;
-        font-weight:800;
-        text-transform:uppercase;
-        border-radius:999px;
-        border:1px solid rgba(0,0,0,.08);
-        box-shadow:0 8px 20px rgba(255,215,0,.4);
-        text-decoration:none;
-        transition:background .2s ease, box-shadow .2s ease;
-      }
-      .btn--store--mobile:hover,
-      .btn--store--mobile:focus-visible{
-        background:linear-gradient(180deg,#fff3a8,#ffe066 55%,#ffc533);
-        box-shadow:0 10px 28px rgba(255,215,0,.55);
-        outline:none;
-      }
+      /* Ocultar botón de tienda del header en móvil (usar FAB) */
+      .header .btn--store{ display:none !important; }
     }
   </style>
 </head>
@@ -135,7 +100,7 @@
           <!-- TikTok -->
           <a aria-label="TikTok" href="https://www.tiktok.com/@silvafast.tuc" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M16 8.3a5.5 5.5 0 0 1-1-3.3h2.7a6.8 6.8 0 0 0 3 3v2.8a9 9 0 0 1-5-1.6v6.7a5.9 5.9 0 1 1-5.5-5.9c.4 0 .8 0 1.1.1v3a2.9 2.9 0 1 0 2 2.8V2h2.7V8.3z"/>
+              <path fill="currentColor" d="M16 8.3a5.5 5.5 0 0 1-1-3.3h2.7a6.8 6.8 0 0 0 3 3v2.8a9 9 0  0 1-5-1.6v6.7a5.9 5.9 0 1 1-5.5-5.9c.4 0 .8 0 1.1.1v3a2.9 2.9 0 1 0 2 2.8V2h2.7V8.3z"/>
             </svg>
           </a>
           <!-- YouTube -->
@@ -224,11 +189,11 @@
       <h2 class="section__title reveal">Productos</h2>
       <p class="section__subtitle reveal delay-1">Soluciones para cada necesidad: hogar y obra, automotor, construcción, industria y herramientas.</p>
 
-    <div class="grid products">
+      <div class="grid products">
         <!-- Hogar y Obra -->
         <article class="card card--product reveal">
           <div class="prod__icon" aria-hidden="true">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="M3 6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1h3a2 2 0 1 1 0 4h-3v5a3 3 0 0 1-3 3h-2v-2h2a1 1 0 0 0 1-1V11H5a2 2 0 0 1-2-2V6z" fill="#3b2b23"/><rect x="4" y="5" width="9" height="4" rx="1" fill="#ffd700"/></svg>
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="M3 6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1h3a2 2 0 1 1 0 4h-3v5a3 3 0  0 1-3 3h-2v-2h2a1 1 0  0 0 1-1V11H5a2 2 0 0 1-2-2V6z" fill="#3b2b23"/><rect x="4" y="5" width="9" height="4" rx="1" fill="#ffd700"/></svg>
           </div>
           <h3 class="card__title">Hogar y Obra</h3>
           <p><strong>Pinturas para hogar y obra</strong></p>
@@ -508,8 +473,12 @@
     </div>
   </footer>
 
-  <!-- Botón Tienda flotante (solo visible en móviles, centrado) -->
-  <a href="https://www.tienda.silvafast.com.ar/" class="btn--store btn--store--mobile" aria-label="Ir a la tienda">Tienda</a>
+  <!-- FAB móvil: grupo de botones (Tienda + WhatsApp) -->
+  <div class="mobile-fab" aria-label="Acciones rápidas">
+    <a href="https://www.tienda.silvafast.com.ar/" class="btn--store btn--store--mobile" aria-label="Ir a la tienda">Tienda</a>
+    <!-- WhatsApp SOLO ÍCONO -->
+    <a href="https://wa.me/543815698906" class="btn--wa btn--wa--mobile" aria-label="Escribir por WhatsApp" target="_blank" rel="noopener"></a>
+  </div>
 
   <script src="script.js"></script>
 </body>
